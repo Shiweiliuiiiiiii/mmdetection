@@ -19,8 +19,8 @@ source activate LoRA
 #module load PyTorch/1.10.0-foss-2021a-CUDA-11.3.1
 
 
-python -m torch.distributed.launch --nproc_per_node=1 tools/train.py configs/SLaK/cascade_mask_rcnn_slak_small_patch4_window7_mstrain_480-800_giou_4conv1f_adamw_3x_coco_in1k.py \
---launcher pytorch --options model.backbone.pretrained=~/project_space/LoRA_LK/checkpoint/github_upload/SLaK_small_checkpoint.pth \
---work-dir /projects/0/prjste21060/projects/Detection/Coco_slak_tiny_120epochs/  --auto-resume
+python -m torch.distributed.launch --nproc_per_node=4 tools/train.py configs/SLaK/cascade_mask_rcnn_slak_small_patch4_window7_mstrain_480-800_giou_4conv1f_adamw_3x_coco_in1k.py \
+--launcher pytorch --options model.backbone.pretrained=/slak_small/checkpoint-best.pth \
+--work-dir /projects/0/prjste21060/projects/Detection/Coco_slak_small/  --auto-resume
 
 source deactivate

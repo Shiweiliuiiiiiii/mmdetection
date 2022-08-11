@@ -20,12 +20,12 @@ model = dict(
         drop_path_rate=0.4,
         layer_scale_init_value=1.0,
         out_indices=[0, 1, 2, 3],
-        LoRA=False,
-        kernel_size=[31, 29, 27, 13, 5],
-        width_factor=1.0,
-        sparse=False,
+        kernel_size=[51, 49, 47, 13, 5],
+        LoRA=True,
+        width_factor=1.3,
+        sparse=True,
     ),
-    neck=dict(in_channels=[96, 192, 384, 768]),
+    neck=dict(in_channels=[124, 249, 499, 998]),
     roi_head=dict(
         bbox_head=[
             dict(

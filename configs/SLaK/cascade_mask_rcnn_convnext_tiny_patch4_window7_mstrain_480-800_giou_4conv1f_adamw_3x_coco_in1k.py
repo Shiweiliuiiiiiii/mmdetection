@@ -137,6 +137,6 @@ optimizer = dict(constructor='LearningRateDecayOptimizerConstructor', _delete_=T
                                 'decay_type': 'layer_wise',
                                 'num_layers': 6})
 
-lr_config = dict(step=[27, 33])
-runner = dict(type='EpochBasedRunner', max_epochs=36)
+lr_config = dict(step=[8, 11])
+runner = dict(type='EpochBasedRunner', max_epochs=12)
 
