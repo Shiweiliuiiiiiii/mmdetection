@@ -1,14 +1,14 @@
 #!/bin/bash
-#SBATCH --job-name=COCO_convnext_tiny_1x
+#SBATCH --job-name=COCO_convnext_tiny
 #SBATCH -p gpu
 #SBATCH -N 1
 #SBATCH --ntasks-per-node=1
 #SBATCH --gpus-per-node=4
 #SBATCH --gpus=4
-#SBATCH -t 3-00:00:00
+#SBATCH -t 3-12:00:00
 #SBATCH --exclusive
 #SBATCH --cpus-per-task=72
-#SBATCH -o COCO_convnext_tiny_1x.out
+#SBATCH -o COCO_convnext_tiny.out
 
 source /home/sliu/miniconda3/etc/profile.d/conda.sh
 source activate LoRA
@@ -19,7 +19,7 @@ source activate LoRA
 #module load PyTorch/1.10.0-foss-2021a-CUDA-11.3.1
 
 
-python -m torch.distributed.launch --nproc_per_node=4 tools/train.py configs/SLaK/cascade_mask_rcnn_slak_tiny_patch4_window7_mstrain_480-800_giou_4conv1f_adamw_3x_coco_in1k.py \
+python -m torch.distributed.launch --nproc_per_node=4 tools/train.py configs/SLaK/cascade_mask_rcnn_convnext_tiny_patch4_window7_mstrain_480-800_giou_4conv1f_adamw_3x_coco_in1k.py \
 --launcher pytorch --options model.backbone.pretrained=~/project_space/LoRA_LK/transfer/convnext_tiny/120epochs/checkpoint-best.pth \
 --work-dir /projects/0/prjste21060/projects/Detection/Coco_conv_tiny_120epochs/  --auto-resume
 

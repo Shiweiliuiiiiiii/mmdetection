@@ -17,7 +17,7 @@ model = dict(
         in_chans=3,
         depths=[3, 3, 27, 3], 
         dims=[128, 256, 512, 1024], 
-        drop_path_rate=0.7,
+        drop_path_rate=0.6,
         layer_scale_init_value=1.0,
         out_indices=[0, 1, 2, 3],
         LoRA=True,
@@ -128,7 +128,7 @@ train_pipeline = [
     dict(type='DefaultFormatBundle'),
     dict(type='Collect', keys=['img', 'gt_bboxes', 'gt_labels', 'gt_masks']),
 ]
-data = dict(train=dict(pipeline=train_pipeline), samples_per_gpu=4, workers_per_gpu=2)
+data = dict(train=dict(pipeline=train_pipeline), samples_per_gpu=2, workers_per_gpu=2)
 
 optimizer = dict(constructor='LearningRateDecayOptimizerConstructor', _delete_=True, type='AdamW', 
                  lr=0.0002, betas=(0.9, 0.999), weight_decay=0.05,

@@ -129,7 +129,7 @@ train_pipeline = [
     dict(type='DefaultFormatBundle'),
     dict(type='Collect', keys=['img', 'gt_bboxes', 'gt_labels', 'gt_masks']),
 ]
-data = dict(train=dict(pipeline=train_pipeline), samples_per_gpu=4, workers_per_gpu=2)
+data = dict(train=dict(pipeline=train_pipeline), samples_per_gpu=2, workers_per_gpu=2)
 
 optimizer = dict(constructor='LearningRateDecayOptimizerConstructor', _delete_=True, type='AdamW', 
                  lr=0.0002, betas=(0.9, 0.999), weight_decay=0.05,
@@ -137,5 +137,5 @@ optimizer = dict(constructor='LearningRateDecayOptimizerConstructor', _delete_=T
                                 'decay_type': 'layer_wise',
                                 'num_layers': 6})
 lr_config = dict(step=[27, 33])
-runner = dict(type='EpochBasedRunner', max_epochs=12)
+runner = dict(type='EpochBasedRunner', max_epochs=36)
 

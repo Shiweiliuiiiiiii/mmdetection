@@ -5,10 +5,10 @@
 #SBATCH --ntasks-per-node=1
 #SBATCH --gpus-per-node=4
 #SBATCH --gpus=4
-#SBATCH -t 3-00:00:00
+#SBATCH -t 3-12:00:00
 #SBATCH --exclusive
 #SBATCH --cpus-per-task=72
-#SBATCH -o COCO_slak_tiny_1x.out
+#SBATCH -o COCO_slak_tiny_1x_resume3.out
 
 source /home/sliu/miniconda3/etc/profile.d/conda.sh
 source activate LoRA
