@@ -1,5 +1,5 @@
 #!/bin/bash
-#SBATCH --job-name=COCO_slak_tiny_1x
+#SBATCH --job-name=COCO_slak_tiny_3x
 #SBATCH -p gpu
 #SBATCH -N 1
 #SBATCH --ntasks-per-node=1
@@ -8,10 +8,10 @@
 #SBATCH -t 3-12:00:00
 #SBATCH --exclusive
 #SBATCH --cpus-per-task=72
-#SBATCH -o COCO_slak_tiny_1x_resume3.out
+#SBATCH -o COCO_slak_tiny_3x.out
 
 source /home/sliu/miniconda3/etc/profile.d/conda.sh
-source activate LoRA
+source activate slak
 
 #module purge
 #module load 2021

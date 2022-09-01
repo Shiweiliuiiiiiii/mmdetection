@@ -1,5 +1,5 @@
 #!/bin/bash
-#SBATCH --job-name=COCO_replknet_tiny
+#SBATCH --job-name=COCO_replknet_tiny_fix_scalelr_1x
 #SBATCH -p gpu
 #SBATCH -N 1
 #SBATCH --ntasks-per-node=1
@@ -8,7 +8,7 @@
 #SBATCH -t 3-12:00:00
 #SBATCH --exclusive
 #SBATCH --cpus-per-task=72
-#SBATCH -o COCO_replknet_tiny.out
+#SBATCH -o COCO_replknet_tiny_fix_scalelr_1x.out
 
 source /home/sliu/miniconda3/etc/profile.d/conda.sh
 source activate LoRA
@@ -21,6 +21,6 @@ source activate LoRA
 
 python -m torch.distributed.launch --nproc_per_node=4 tools/train.py configs/SLaK/cascade_mask_rcnn_rep_tiny_patch4_window7_mstrain_480-800_giou_4conv1f_adamw_3x_coco_in1k.py \
 --launcher pytorch --options model.backbone.pretrained=~/project_space/LoRA_LK/transfer/Kernel_size/31292713/5/Rep/120epochs/checkpoint-best.pth \
---work-dir /projects/0/prjste21060/projects/Detection/Coco_rep_tiny_120epochs_fix/  --auto-resume
+--work-dir /projects/0/prjste21060/projects/Detection/Coco_rep_tiny_120epochs_fix_scalelr_1x/  --auto-resume
 
 source deactivate
