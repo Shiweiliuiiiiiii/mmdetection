@@ -139,3 +139,5 @@ optimizer = dict(constructor='LearningRateDecayOptimizerConstructor', _delete_=T
 lr_config = dict(step=[8, 11])
 runner = dict(type='EpochBasedRunner', max_epochs=12)
 
+auto_scale_lr = dict(enable=True, base_batch_size=16)
+
