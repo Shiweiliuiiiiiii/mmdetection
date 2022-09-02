@@ -11,7 +11,7 @@
 #SBATCH -o COCO_slak_tiny_1x_resume3.out
 
 source /home/sliu/miniconda3/etc/profile.d/conda.sh
-source activate LoRA
+source activate slak
 
 #module purge
 #module load 2021

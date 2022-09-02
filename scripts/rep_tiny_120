@@ -11,7 +11,7 @@
 #SBATCH -o COCO_replknet_tiny_fix_scalelr_1x.out
 
 source /home/sliu/miniconda3/etc/profile.d/conda.sh
-source activate LoRA
+source activate slak
 
 #module purge
 #module load 2021
