@@ -14,7 +14,7 @@ _base_ = [
 
 model = dict(
     backbone=dict(
-        type='SLaK_SSL',
+        type='SLaK',
         in_chans=3,
         depths=[3, 3, 9, 3],
         dims=[96, 192, 384, 768],
