@@ -1,0 +1,21 @@
+#!/bin/bash
+#SBATCH --job-name=COCO_slak_tiny_ssl_3x
+#SBATCH -p gpu
+#SBATCH -N 1
+#SBATCH --ntasks-per-node=1
+#SBATCH --gpus-per-node=4
+#SBATCH --gpus=4
+#SBATCH -t 3-12:00:00
+#SBATCH --exclusive
+#SBATCH --cpus-per-task=72
+#SBATCH -o COCO_slak_tiny_ssl_3x.out
+
+source /home/sliu/miniconda3/etc/profile.d/conda.sh
+source activate slak
+
+
+python -m torch.distributed.launch --nproc_per_node=1 tools/train.py configs/slak_ssl/mask_rcnn_convnext_tiny_patch4_window7_mstrain_480-800_adamw_3x_coco_in1k.py \
+--launcher pytorch --options /projects/0/prjste21060/projects/dino/dino_slak_9_bn_300/checkpoint.pth \
+--work-dir /projects/0/prjste21060/projects/Detection/Coco_slak_ssl_tiny_300e/  --auto-resume
+
+source deactivate
