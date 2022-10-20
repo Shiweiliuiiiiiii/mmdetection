@@ -4,18 +4,18 @@
 
 # This source code is licensed under the license found in the
 # LICENSE file in the root directory of this source tree.
-
-import sys
-# Add WHERE_YOU_CLONED_CUTLASS/examples/19_large_depthwise_conv2d_torch_extension into your PYTHONPATH by the following commands:
-sys.path.append('WHERE_YOU_CLONED_CUTLASS/examples/19_large_depthwise_conv2d_torch_extension')
-
+import warnings
+from collections import OrderedDict
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
 from timm.models.layers import trunc_normal_, DropPath
-from timm.models.registry import register_model
 from depthwise_conv2d_implicit_gemm import DepthWiseConv2dImplicitGEMM
-
+from mmseg.utils import get_root_logger
+from ..builder import BACKBONES
+from mmcv.runner import (BaseModule, CheckpointLoader, ModuleList,
+                         load_state_dict)
+from functools import partial
 
 
 use_sync_bn = True
@@ -168,6 +168,7 @@ class Block(nn.Module):
         x = input + self.drop_path(x)
         return x
 
+@BACKBONES.register_module()
 class SLaK_SSL(nn.Module):
     r""" SLaK
         A PyTorch impl of More ConvNets in the 2020s: Scaling up Kernels Beyond 51 × 51 using Sparsity
