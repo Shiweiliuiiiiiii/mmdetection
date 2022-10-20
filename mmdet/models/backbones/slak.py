@@ -298,6 +298,10 @@ class SLaK(BaseModule):
             else:
                 _state_dict = ckpt
 
+            # strip prefix of state_dict
+            if list(state_dict.keys())[0].startswith('module.'):
+                state_dict = {k[7:]: v for k, v in state_dict.items()}
+
             state_dict = OrderedDict()
             for k, v in _state_dict.items():
                 if k.startswith('backbone.'):
@@ -305,9 +309,6 @@ class SLaK(BaseModule):
                 else:
                     state_dict[k] = v
 
-            # strip prefix of state_dict
-            if list(state_dict.keys())[0].startswith('module.'):
-                state_dict = {k[7:]: v for k, v in state_dict.items()}
 
             # load state_dict
             load_state_dict(self, state_dict, strict=False, logger=logger)
