@@ -289,6 +289,8 @@ class SLaK(BaseModule):
                                                   f'{self.__class__.__name__} '
             ckpt = CheckpointLoader.load_checkpoint(
                 self.init_cfg['checkpoint'], logger=logger, map_location='cpu')
+            if 'teacher' in ckpt: # for dino-like ssl learning
+                ckpt = ckpt['teacher']
             if 'state_dict' in ckpt:
                 _state_dict = ckpt['state_dict']
             elif 'model' in ckpt:
