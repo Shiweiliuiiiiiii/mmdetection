@@ -299,8 +299,8 @@ class SLaK(BaseModule):
                 _state_dict = ckpt
 
             # strip prefix of state_dict
-            if list(state_dict.keys())[0].startswith('module.'):
-                state_dict = {k[7:]: v for k, v in state_dict.items()}
+            if list(_state_dict.keys())[0].startswith('module.'):
+                _state_dict = {k[7:]: v for k, v in _state_dict.items()}
 
             state_dict = OrderedDict()
             for k, v in _state_dict.items():
