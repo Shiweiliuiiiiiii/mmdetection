@@ -168,7 +168,7 @@ class Block(nn.Module):
         x = input + self.drop_path(x)
         return x
 
-class SLaK(nn.Module):
+class SLaK_SSL(nn.Module):
     r""" SLaK
         A PyTorch impl of More ConvNets in the 2020s: Scaling up Kernels Beyond 51 × 51 using Sparsity
 
@@ -276,8 +276,8 @@ model_urls = {
 }
 
 @register_model
-def SLaK_tiny(pretrained=False, **kwargs):
-    model = SLaK(depths=[3, 3, 9, 3], dims=[96, 192, 384, 768], **kwargs)
+def SLaK_SSL_tiny(pretrained=False, **kwargs):
+    model = SLaK_SSL(depths=[3, 3, 9, 3], dims=[96, 192, 384, 768], **kwargs)
     if pretrained:
         url = model_urls['convnext_tiny_1k']
         checkpoint = torch.hub.load_state_dict_from_url(url=url, map_location="cpu", check_hash=True)
@@ -285,8 +285,8 @@ def SLaK_tiny(pretrained=False, **kwargs):
     return model
 
 @register_model
-def SLaK_small(pretrained=False, **kwargs):
-    model = SLaK(depths=[3, 3, 27, 3], dims=[96, 192, 384, 768], **kwargs)
+def SLaK_SSL_small(pretrained=False, **kwargs):
+    model = SLaK_SSL(depths=[3, 3, 27, 3], dims=[96, 192, 384, 768], **kwargs)
     if pretrained:
         url = model_urls['convnext_small_1k']
         checkpoint = torch.hub.load_state_dict_from_url(url=url, map_location="cpu")
@@ -294,8 +294,8 @@ def SLaK_small(pretrained=False, **kwargs):
     return model
 
 @register_model
-def SLaK_base(pretrained=False, in_22k=False, **kwargs):
-    model = SLaK(depths=[3, 3, 27, 3], dims=[128, 256, 512, 1024], **kwargs)
+def SLaK_SSL_base(pretrained=False, in_22k=False, **kwargs):
+    model = SLaK_SSL(depths=[3, 3, 27, 3], dims=[128, 256, 512, 1024], **kwargs)
     if pretrained:
         url = model_urls['convnext_base_22k'] if in_22k else model_urls['convnext_base_1k']
         checkpoint = torch.hub.load_state_dict_from_url(url=url, map_location="cpu")
@@ -303,8 +303,8 @@ def SLaK_base(pretrained=False, in_22k=False, **kwargs):
     return model
 
 @register_model
-def SLaK_large(pretrained=False, in_22k=False, **kwargs):
-    model = SLaK(depths=[3, 3, 27, 3], dims=[192, 384, 768, 1536], **kwargs)
+def SLaK_SSL_large(pretrained=False, in_22k=False, **kwargs):
+    model = SLaK_SSL(depths=[3, 3, 27, 3], dims=[192, 384, 768, 1536], **kwargs)
     if pretrained:
         url = model_urls['convnext_large_22k'] if in_22k else model_urls['convnext_large_1k']
         checkpoint = torch.hub.load_state_dict_from_url(url=url, map_location="cpu")
@@ -312,8 +312,8 @@ def SLaK_large(pretrained=False, in_22k=False, **kwargs):
     return model
 
 @register_model
-def SLaK_xlarge(pretrained=False, in_22k=False, **kwargs):
-    model = SLaK(depths=[3, 3, 27, 3], dims=[256, 512, 1024, 2048], **kwargs)
+def SLaK_SSL_xlarge(pretrained=False, in_22k=False, **kwargs):
+    model = SLaK_SSL(depths=[3, 3, 27, 3], dims=[256, 512, 1024, 2048], **kwargs)
     if pretrained:
         assert in_22k, "only ImageNet-22K pre-trained ConvNeXt-XL is available; please set in_22k=True"
         url = model_urls['convnext_xlarge_22k']
