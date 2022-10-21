@@ -138,5 +138,15 @@ optimizer = dict(constructor='LearningRateDecayOptimizerConstructor', _delete_=T
                                 'num_layers': 6})
 
 lr_config = dict(step=[8, 11])
-runner = dict(type='EpochBasedRunner', max_epochs=12)
-auto_scale_lr = dict(enable=True, base_batch_size=16)
+runner = dict(type='EpochBasedRunnerAmp', max_epochs=36)
+
+# do not use mmdet version fp16
+fp16 = None
+optimizer_config = dict(
+    type="DistOptimizerHook",
+    update_interval=1,
+    grad_clip=None,
+    coalesce=True,
+    bucket_size_mb=-1,
+    use_fp16=True,
+
