@@ -2,4 +2,4 @@
 
 from .checkpoint import load_checkpoint
 import runner
-__all__ = ['load_checkpoint']
+__all__ = ['load_checkpoint', 'runner']
