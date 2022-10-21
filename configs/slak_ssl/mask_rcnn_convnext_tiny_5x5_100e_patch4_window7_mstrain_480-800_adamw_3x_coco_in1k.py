@@ -22,7 +22,7 @@ model = dict(
         layer_scale_init_value=1.0,
         out_indices=[0, 1, 2, 3],
         LoRA=False,
-        kernel_size=[9, 9, 9, 9, 100],
+        kernel_size=[5, 5, 5, 5, 100],
         width_factor=1.0,
         sparse=False,
     ),
@@ -79,8 +79,8 @@ optimizer = dict(constructor='LearningRateDecayOptimizerConstructor', _delete_=T
                                 'decay_type': 'layer_wise',
                                 'num_layers': 6})
 
-lr_config = dict(step=[8, 11])
-runner = dict(type='EpochBasedRunner', max_epochs=12)
+lr_config = dict(step=[27, 33])
+runner = dict(type='EpochBasedRunner', max_epochs=36)
 
 # do not use mmdet version fp16
 # fp16 = None
