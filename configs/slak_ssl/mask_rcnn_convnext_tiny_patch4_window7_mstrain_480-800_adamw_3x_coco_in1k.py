@@ -79,7 +79,7 @@ optimizer = dict(constructor='LearningRateDecayOptimizerConstructor', _delete_=T
                                 'num_layers': 6})
 
 lr_config = dict(step=[27, 33])
-runner = dict(type='EpochBasedRunnerAmp', max_epochs=36)
+runner = dict(type='EpochBasedRunner', max_epochs=36)
 
 # do not use mmdet version fp16
 fp16 = None
