@@ -10,6 +10,7 @@ import torch
 import torch.nn as nn
 import torch.nn.functional as F
 from timm.models.layers import trunc_normal_, DropPath
+from mmcv_custom import load_checkpoint
 from depthwise_conv2d_implicit_gemm import DepthWiseConv2dImplicitGEMM
 from mmseg.utils import get_root_logger
 from ..builder import BACKBONES
