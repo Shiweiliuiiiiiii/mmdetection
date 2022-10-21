@@ -5,7 +5,7 @@
 #SBATCH --ntasks-per-node=4
 #SBATCH --gpus-per-node=4
 #SBATCH --gpus=4
-#SBATCH -t 2-00:00:00
+#SBATCH -t 4-00:00:00
 #SBATCH --exclusive
 #SBATCH --cpus-per-task=18
 #SBATCH -o COCO_slak_tiny_ssl_9x9_300e_3x.out
