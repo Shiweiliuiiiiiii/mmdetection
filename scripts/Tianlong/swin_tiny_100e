@@ -15,7 +15,7 @@ source activate slak
 
 
 python -m torch.distributed.launch --nproc_per_node=4 tools/train.py configs/slak_ssl/mask_rcnn_convnext_tiny_9x9_100e_patch4_window7_mstrain_480-800_adamw_3x_coco_in1k.py \
---launcher pytorch --options model.backbone.pretrained=/projects/0/prjste21060/projects/dino/dino_slak_9_bn/checkpoint0080.pth \
---work-dir /projects/0/prjste21060/projects/Detection/Coco_slak_ssl_tiny_9x9_100e/  --auto-resume
+--launcher pytorch --options model.backbone.pretrained=/datadrive_c/ssl/checkpoints/9x9_100e/checkpoint.pth \
+--work-dir /datadrive_c/ssl/9x9_100e/  --auto-resume
 
 source deactivate
